@@ -16,6 +16,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # Includes minimal runtime used for executing non GUI Python programs
 #========================
 RUN apt-get install -y libpq-dev libxml2-dev libxslt1-dev python-dev libyaml-dev
+RUN apt-get install pip
 RUN mkdir -p /opt/zato-apitest/
 RUN git clone https://github.com/yodaqua/zato-apitest.git /opt/zato-apitest/
 RUN pip install 'six==1.6.1'
