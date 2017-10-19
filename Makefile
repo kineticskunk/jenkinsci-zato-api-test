@@ -31,7 +31,7 @@ generate_jenkins_slave_zato_api_testing:
 	cd ./JenkinsSlaveZato && pwd && ./generate.sh $(VERSION) $(NAMESPACE) $(AUTHORS)
 
 jenkinsci-zato-api-testing: jenkinsci generate_jenkins_slave_zato_api_testing
-	cd ./NodeBase && docker build $(BUILD_ARGS) -t $(NAME)/generate_jenkinsci-zato-api-testing:$(VERSION) .
+	cd ./JenkinsSlaveZato && docker build $(BUILD_ARGS) -t $(NAME)/generate_jenkinsci-zato-api-testing:$(VERSION) .
 
 tag_latest:
 	docker tag $(NAME)/base:$(VERSION) $(NAME)/base:latest
