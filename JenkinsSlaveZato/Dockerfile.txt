@@ -22,14 +22,21 @@ RUN apt-get -qqy update \
 # Miscellaneous packages
 # Includes minimal runtime used for executing non GUI Python programs
 #========================
-RUN apt-get install -y libpq-dev libxml2-dev libxslt1-dev python-dev libyaml-dev
-RUN apt-get install -y python-pip python-dev build-essential
-RUN apt-get install -y pip
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y apt-utils
+RUN apt-get install -y apt-transport-https software-properties-common python-setuptools python-pip
+RUN apt-get install -y zlib1g-dev
 RUN pip install --upgrade pip
+RUN pip install --upgrade setuptools
+RUN pip install wheel
+RUN pip install python2
+RUN pip install toolium
+
+RUN apt-get install -y libpq-dev libxml2-dev libxslt1-dev python-dev libyaml-dev
 RUN mkdir -p /opt/zato-apitest/
 RUN git clone https://github.com/yodaqua/zato-apitest.git /opt/zato-apitest/
 RUN pip install 'six==1.6.1'
 RUN pip install 'nose==1.3.3'
-RUN chown root:root -R /opt/zato-apitest/ && cd /opt/zato-apitest/ && pip install -r requirements.txt
+RUN chown ${user}:${user} -R /opt/zato-apitest/ && cd /opt/zato-apitest/ && pip install -r requirements.txt
 RUN pip install zato-apitest
-RUN pip install -U requests
