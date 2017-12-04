@@ -32,7 +32,7 @@ RUN apt-get -qqy update \
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 
-RUN copy requirements.txt /home/jenkins
+COPY requirements.txt /home/jenkins
 RUN pip install -r requirements.txt
 
 RUN mkdir -p /opt/zato-apitest/
