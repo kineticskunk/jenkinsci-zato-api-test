@@ -32,14 +32,12 @@ RUN apt-get -qqy update \
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 
-COPY requirements.txt /home/jenkins
-RUN pip install -r requirements.txt
-
 RUN mkdir -p /opt/zato-apitest/
 RUN git clone https://github.com/yodaqua/zato-apitest.git /opt/zato-apitest/
 
-USER jenkins
-
 RUN chown ${user}:${user} -R /opt/zato-apitest/ && cd /opt/zato-apitest/ && pip install -r requirements.txt
+
+COPY requirements.txt /home/jenkins
+RUN pip install -r requirements.txt
 
 CMD ["/usr/sbin/sshd", "-D"]
