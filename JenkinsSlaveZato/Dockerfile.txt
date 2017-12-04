@@ -25,6 +25,7 @@ RUN apt-get -qqy update \
 	zlib1g-dev \
 	libpq-dev \
 	libxml2-dev \
+	libxslt1-dev \
 	python-dev \
 	libyaml-dev \
 	openssh-server \
