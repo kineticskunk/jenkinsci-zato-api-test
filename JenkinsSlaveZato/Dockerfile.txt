@@ -27,7 +27,8 @@ RUN apt-get -qqy update \
 	libxml2-dev \
 	python-dev \
 	libyaml-dev \
-	openssh-server
+	openssh-server \
+	build-essential
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
