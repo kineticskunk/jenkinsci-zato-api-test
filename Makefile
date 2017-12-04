@@ -16,7 +16,7 @@ generate_all:	\
 
 build: all
 
-ci: build
+ci: build test
 
 base:
 	cd ./Base && docker build $(BUILD_ARGS) -t $(NAME)/base:$(VERSION) .
@@ -64,6 +64,9 @@ release: tag_major_minor
 	docker push $(NAME)/base:$(MAJOR_MINOR_PATCH)
 	docker push $(NAME)/jenkinsci:$(MAJOR_MINOR_PATCH)
 	docker push $(NAME)/jenkinsci-zato-api-testing:$(MAJOR_MINOR_PATCH)
+
+test:
+	VERSION=$(VERSION) ./test.sh
 
 .PHONY: \
 	all \
