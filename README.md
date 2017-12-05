@@ -2,9 +2,10 @@
 Jenkins Slave ZATO API testing Docker image
 
 ## pull image
-docker pull kineticskunk/jenkinsci-zato-api-testing:latest
+docker pull kineticskunk/jenkinsci-zato-api-testing:1.0.0
+current verion = 1.0.0 (05-12-2017)
 
-## build image
+## build images
 From commandline: VERSION='version' NAMESPACE='organisation_name' AUTHORS='whatever_you_call_yourself' make build
 
 ## run image
